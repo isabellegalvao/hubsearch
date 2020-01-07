@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PRIMARY_COLOR, LIGHT, SIZES } from '../../styles/theme';
+import { PRIMARY_COLOR, LIGHT, SIZES, DEVICE } from '../../styles/theme';
 
 export const SidebarWrapper = styled.aside`
   background-color: ${PRIMARY_COLOR};
@@ -10,6 +10,12 @@ export const SidebarWrapper = styled.aside`
   position: fixed;
   top: 0;
   width: 30%;
+
+  @media ${DEVICE.desktop_max} {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+  }
 `;
 
 export const SidebarImage = styled.img`

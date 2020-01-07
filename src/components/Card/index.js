@@ -10,10 +10,10 @@ import {
   CardLink,
 } from './style';
 
-const Card = () => {
+const Card = props => {
   return (
     <>
-      <CardWrapper>
+      <CardWrapper {...props}>
         <CardStars>
           <CardStarsNumber>0</CardStarsNumber> Stars
         </CardStars>
