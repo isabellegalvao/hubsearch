@@ -6,8 +6,8 @@ export const SIZES = {
   xs: '14px',
   sm: '16px',
   md: '18px',
-  lg: '20px',
-  xl: '24px',
+  lg: '22px',
+  xl: '36px',
 };
 
 /**
