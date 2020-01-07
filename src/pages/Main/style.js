@@ -4,6 +4,7 @@ import {
   GREY_DARK,
   SIZES,
   PRIMARY_FONT,
+  DEVICE,
 } from '../../styles/theme';
 
 export const MainWrapper = styled.div`
@@ -13,11 +14,19 @@ export const MainWrapper = styled.div`
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
+
+  @media ${DEVICE.mobile} {
+    border-width: 15px;
+  }
 `;
 
 export const MainContent = styled.div`
   text-align: center;
   padding: 0 60px;
+
+  @media ${DEVICE.mobile} {
+    padding: 0 20px;
+  }
 `;
 
 export const MainTitle = styled.h1`
