@@ -1,8 +1,8 @@
-  <h1 align="center" margin="30px 0">HubSearch 🔎</h1>
+<h1 align="center" margin="30px 0">HubSearch 🔎</h1>
 
-<blockquote>
+<br>
+
 <p align="center" padding="15px 0"><g-emoji class="g-emoji" alias="bust_in_silhouette" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f464.png">👤</g-emoji> HubSearch is a application to search users and list their repositories</p>
-</blockquote>
 
 <br>
 
