@@ -9,4 +9,5 @@ export const DEVICE = {
   tablet: `screen and (min-width: ${SCREENS.mobile}px) and (max-width: ${SCREENS.tablet}px)`,
   tablet_max: `(max-width: ${SCREENS.tablet}px)`,
   desktop: `screen and (min-width: ${SCREENS.desktop}px)`,
+  desktop_max: `screen and (max-width: ${SCREENS.desktop}px)`,
 };
