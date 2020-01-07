@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { PRIMARY_COLOR, LIGHT, SIZES } from '../../styles/theme';
 
-export const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.aside`
   background-color: ${PRIMARY_COLOR};
   color: ${LIGHT};
   height: 100%;
+  left: 0;
   padding: 40px;
+  position: fixed;
+  top: 0;
   width: 30%;
 `;
 
