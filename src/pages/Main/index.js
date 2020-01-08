@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
+import api from '../../services/api';
 
 import {
   MainWrapper,
@@ -27,7 +28,18 @@ export default class Main extends Component {
 
     const { newUser } = this.state;
     const { history } = this.props;
-    history.push(`/profile/${newUser}`);
+
+    const response = await api.get(`/users/${newUser}`);
+
+    const { name, bio, followers, following, avatar_url } = response.data;
+
+    history.push(`/profile/${newUser}`, {
+      name,
+      bio,
+      followers,
+      following,
+      avatar_url,
+    });
   };
 
   render() {
@@ -48,6 +60,7 @@ export default class Main extends Component {
                 placeholder="e.g: vncsrbro"
                 value={newUser}
                 onChange={this.handleInputChange}
+                required
               />
 
               <MainFormButton>
