@@ -9,7 +9,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={`${process.env.PUBLIC_URL}/`} component={Main} />
+        <Route path="/" exact component={Main} />
         <Route path="/repository" exact component={Repository} />
         <Route path="/profile" exact component={Profile} />
       </Switch>
