@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Sidebar from '../../components/Sidebar';
 import Card from '../../components/Card';
 
 import { ProfileWrapper, List } from './style';
 
-const Profile = () => (
-  <>
-    <ProfileWrapper>
-      <Sidebar />
-      <List>
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-      </List>
-    </ProfileWrapper>
-  </>
-);
+export default class Profile extends Component {
+  state = {};
 
-export default Profile;
+  async componentDidMount() {
+    const { match } = this.props;
+
+    const userName = match.params.user;
+
+    console.log(userName);
+  }
+
+  render() {
+    return (
+      <>
+        <ProfileWrapper>
+          <Sidebar />
+          <List>
+            <Card className="card" />
+            <Card className="card" />
+            <Card className="card" />
+            <Card className="card" />
+            <Card className="card" />
+            <Card className="card" />
+            <Card className="card" />
+          </List>
+        </ProfileWrapper>
+      </>
+    );
+  }
+}

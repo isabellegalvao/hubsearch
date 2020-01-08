@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import api from '../../services/api';
+import PropTypes from 'prop-types';
 
 import {
   MainWrapper,
@@ -25,10 +24,8 @@ export default class Main extends Component {
 
   searchUser = async e => {
     e.preventDefault();
+
     const { newUser } = this.state;
-
-    const response = await api.get(`/users/${newUser}`);
-
     const { history } = this.props;
     history.push(`/profile/${newUser}`);
   };
