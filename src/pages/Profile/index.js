@@ -5,23 +5,21 @@ import Card from '../../components/Card';
 
 import { ProfileWrapper, List } from './style';
 
-const Profile = () => {
-  return (
-    <>
-      <ProfileWrapper>
-        <Sidebar />
-        <List>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-          <Card className="card"></Card>
-        </List>
-      </ProfileWrapper>
-    </>
-  );
-};
+const Profile = () => (
+  <>
+    <ProfileWrapper>
+      <Sidebar />
+      <List>
+        <Card className="card" />
+        <Card className="card" />
+        <Card className="card" />
+        <Card className="card" />
+        <Card className="card" />
+        <Card className="card" />
+        <Card className="card" />
+      </List>
+    </ProfileWrapper>
+  </>
+);
 
 export default Profile;

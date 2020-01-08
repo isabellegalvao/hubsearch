@@ -23,7 +23,7 @@ const Card = props => {
         <CardTechnologie>CSS</CardTechnologie>
 
         <CardLink>
-          <Link to={`/`} activeClassName="current">
+          <Link to="/" activeClassName="current">
             SEE DETAILS
           </Link>
         </CardLink>
