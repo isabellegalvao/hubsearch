@@ -14,7 +14,7 @@ export default class Profile extends Component {
     following: '',
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { match } = this.props;
     const { location } = this.props;
     const { name, bio, avatar_url, followers, following } = location.state;
@@ -36,12 +36,6 @@ export default class Profile extends Component {
             followers={followers}
           />
           <List>
-            <Card className="card" />
-            <Card className="card" />
-            <Card className="card" />
-            <Card className="card" />
-            <Card className="card" />
-            <Card className="card" />
             <Card className="card" />
           </List>
         </ProfileWrapper>
