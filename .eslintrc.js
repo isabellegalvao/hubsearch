@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier/react"],
+  extends: ["plugin:react/recommended", "airbnb", "prettier", "prettier/react"],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly"
@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  plugins: ["react"],
+  plugins: ["react", "prettier"],
   rules: {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
