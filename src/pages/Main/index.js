@@ -29,7 +29,8 @@ export default class Main extends Component {
 
     const response = await api.get(`/users/${newUser}`);
 
-    console.log(response.data);
+    const { history } = this.props;
+    history.push(`/profile/${newUser}`);
   };
 
   render() {
