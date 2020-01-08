@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   SidebarWrapper,
@@ -9,29 +10,34 @@ import {
   SidebarItemNumber,
 } from './style';
 
-const Sidebar = () => {
+const Sidebar = ({ name, avatar, description, followers, following }) => {
   return (
     <>
       <SidebarWrapper>
-        <SidebarImage src="https://avatars3.githubusercontent.com/u/30932300?v=4" />
+        <SidebarImage src={avatar} />
 
-        <SidebarName>Vinicius Ribeiro</SidebarName>
+        <SidebarName>{name}</SidebarName>
 
-        <SidebarDescription>
-          Developer with over 4 years of experience, focused on solving business
-          problems and building high-performance applications.
-        </SidebarDescription>
+        <SidebarDescription>{description}</SidebarDescription>
 
         <SidebarItem>
-          <SidebarItemNumber>6</SidebarItemNumber> Followers
+          <SidebarItemNumber>{followers}</SidebarItemNumber> Followers
         </SidebarItem>
 
         <SidebarItem>
-          <SidebarItemNumber>7</SidebarItemNumber> Following
+          <SidebarItemNumber>{following}</SidebarItemNumber> Following
         </SidebarItem>
       </SidebarWrapper>
     </>
   );
+};
+
+Sidebar.propTypes = {
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  followers: PropTypes.string.isRequired,
+  following: PropTypes.string.isRequired,
 };
 
 export default Sidebar;
