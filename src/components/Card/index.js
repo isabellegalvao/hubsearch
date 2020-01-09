@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import {
@@ -10,17 +11,17 @@ import {
   CardLink,
 } from './style';
 
-const Card = props => {
+const Card = ({ className, stars, title, tech }) => {
   return (
     <>
-      <CardWrapper {...props}>
+      <CardWrapper className={className}>
         <CardStars>
-          <CardStarsNumber>0</CardStarsNumber> Stars
+          <CardStarsNumber>{stars}</CardStarsNumber> Stars
         </CardStars>
 
-        <CardTitle>Gitstar</CardTitle>
+        <CardTitle>{title}</CardTitle>
 
-        <CardTechnologie>CSS</CardTechnologie>
+        <CardTechnologie>{tech}</CardTechnologie>
 
         <CardLink>
           <Link to="/">SEE DETAILS</Link>
@@ -28,6 +29,13 @@ const Card = props => {
       </CardWrapper>
     </>
   );
+};
+
+Card.propTypes = {
+  className: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  tech: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired,
 };
 
 export default Card;
