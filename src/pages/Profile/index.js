@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
@@ -29,9 +28,13 @@ export default class Profile extends Component {
     const { name, bio, avatar_url, followers, following } = location.state;
     this.setState({ name, bio, avatar_url, followers, following });
 
-    const getRepos = await api.get(`/users/${user}/repos`);
-
-    this.setState({ repositories: getRepos.data });
+    try {
+      const getRepos = await api.get(`/users/${user}/repos`);
+      const { data: repositories } = getRepos;
+      this.setState({ repositories });
+    } catch (error) {
+      this.setState({ repositories: [] });
+    }
   }
 
   render() {
@@ -71,11 +74,3 @@ export default class Profile extends Component {
     );
   }
 }
-
-Profile.propTypes = {
-  name: PropTypes.string,
-  avatar_url: PropTypes.string,
-  bio: PropTypes.string,
-  followers: PropTypes.string,
-  following: PropTypes.string,
-};

@@ -36,8 +36,8 @@ Sidebar.propTypes = {
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  followers: PropTypes.string.isRequired,
-  following: PropTypes.string.isRequired,
+  followers: PropTypes.number.isRequired,
+  following: PropTypes.number.isRequired,
 };
 
 export default Sidebar;
