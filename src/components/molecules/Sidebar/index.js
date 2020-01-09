@@ -10,10 +10,19 @@ import {
   SidebarDescription,
 } from './style';
 
-const Sidebar = ({ name, avatar, description, followers, following }) => {
+const Sidebar = ({
+  name,
+  avatar,
+  description,
+  followers,
+  following,
+  children,
+}) => {
   return (
     <>
       <SidebarWrapper>
+        {children}
+
         <SidebarImage src={avatar} />
 
         <SidebarName>{name}</SidebarName>
