@@ -36,7 +36,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   tech: PropTypes.string.isRequired,
   stars: PropTypes.number.isRequired,
-  owner: PropTypes.number.isRequired,
+  owner: PropTypes.string.isRequired,
 };
 
 export default Card;
