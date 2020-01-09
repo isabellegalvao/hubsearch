@@ -32,11 +32,17 @@ export default class Repository extends Component {
 
   render() {
     const { currentRepo } = this.state;
+    const { history } = this.props;
 
     return (
       <>
         <RepositoryWrapper>
-          <Button className="button" icon={icon} text="Back to list" />
+          <Button
+            onClick={history.goBack}
+            className="button"
+            icon={icon}
+            text="Back to list"
+          />
           <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
           <RepositoryContent>
             <Topic
