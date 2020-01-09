@@ -49,13 +49,10 @@ export default class Main extends Component {
         following,
         avatar_url,
       });
-
-      this.setState({ error: false });
     } catch (error) {
       this.setState({ error: true });
+      this.setState({ loading: false });
     }
-
-    this.setState({ loading: false });
   };
 
   render() {
