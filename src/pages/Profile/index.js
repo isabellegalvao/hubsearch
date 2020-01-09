@@ -40,6 +40,11 @@ export default class Profile extends Component {
     }
   }
 
+  searchNewUser() {
+    const { history } = this.props;
+    history.push(`/`);
+  }
+
   render() {
     const {
       name,
@@ -60,7 +65,12 @@ export default class Profile extends Component {
             following={following}
             followers={followers}
           >
-            <Button className="button" icon={icon} text="Search new user" />
+            <Button
+              className="button"
+              icon={icon}
+              text="Search new user"
+              onClick={() => this.searchNewUser()}
+            />
           </Sidebar>
 
           <List>
