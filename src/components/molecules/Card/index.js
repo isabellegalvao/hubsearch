@@ -37,8 +37,12 @@ const Card = ({ className, owner, stars, title, tech }) => {
   );
 };
 
+Card.defaultProps = {
+  className: '',
+};
+
 Card.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   tech: PropTypes.string.isRequired,
   stars: PropTypes.number.isRequired,
