@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 
 import Button from '../../components/atoms/Button';
+import LoaderContent from '../../components/atoms/LoaderContent';
 import Sidebar from '../../components/molecules/Sidebar';
 import Card from '../../components/molecules/Card';
 
 import icon from '../../img/icon__left-arrow.svg';
 
-import { ProfileWrapper, List } from './style';
+import { ProfileWrapper, List, ListLoader } from './style';
 
 export default class Profile extends Component {
   state = {
@@ -18,6 +19,7 @@ export default class Profile extends Component {
     followers: '',
     following: '',
     repositories: [],
+    loading: true,
   };
 
   async componentDidMount() {
@@ -35,6 +37,7 @@ export default class Profile extends Component {
       const getRepos = await api.get(`/users/${user}/repos`);
       const { data: repositories } = getRepos;
       this.setState({ repositories });
+      this.setState({ loading: false });
     } catch (error) {
       this.setState({ repositories: [] });
     }
@@ -53,6 +56,7 @@ export default class Profile extends Component {
       followers,
       following,
       repositories,
+      loading,
     } = this.state;
 
     return (
@@ -74,6 +78,8 @@ export default class Profile extends Component {
           </Sidebar>
 
           <List>
+            {loading && <LoaderContent />}
+
             {repositories.map(repositorie => (
               <Card
                 className="card"
