@@ -32,10 +32,15 @@ const Sidebar = ({ name, avatar, description, followers, following }) => {
   );
 };
 
+Sidebar.defaultProps = {
+  name: '',
+  description: '',
+};
+
 Sidebar.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   avatar: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   followers: PropTypes.number.isRequired,
   following: PropTypes.number.isRequired,
 };
