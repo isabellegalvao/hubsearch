@@ -5,6 +5,6 @@ const api = axios.create({
 });
 
 api.defaults.headers.common['Authorization'] =
-  process.env.REACT_APP_NOT_SECRET_CODE;
+  process.env.REACT_APP_GITHUB_TOKEN;
 
 export default api;
