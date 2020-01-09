@@ -4,6 +4,7 @@ import { GREY_LIGHT, DEVICE } from '../../styles/theme';
 export const ProfileWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  background-color: ${GREY_LIGHT};
 
   @media ${DEVICE.desktop_max} {
     display: block;
@@ -11,11 +12,9 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const List = styled.div`
-  background-color: ${GREY_LIGHT};
   display: flex;
   flex-wrap: wrap;
-  height: auto;
-  padding: 40px 40px;
+  padding: 40px 40px 0;
   width: 70%;
 
   .card {
@@ -24,10 +23,6 @@ export const List = styled.div`
 
     &:not(:nth-child(even)) {
       margin-right: 40px;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
 
     @media ${DEVICE.tablet_max} {

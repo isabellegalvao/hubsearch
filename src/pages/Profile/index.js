@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import api from '../../services/api';
+
 import Sidebar from '../../components/Sidebar';
 import Card from '../../components/Card';
 
@@ -13,18 +15,34 @@ export default class Profile extends Component {
     avatar_url: '',
     followers: '',
     following: '',
+    repositories: [],
   };
 
-  componentDidMount() {
-    const { match } = this.props;
-    const { location } = this.props;
-    const { name, bio, avatar_url, followers, following } = location.state;
+  async componentDidMount() {
+    const {
+      match: {
+        params: { user },
+      },
+      location,
+    } = this.props;
 
+    const { name, bio, avatar_url, followers, following } = location.state;
     this.setState({ name, bio, avatar_url, followers, following });
+
+    const getRepos = await api.get(`/users/${user}/repos`);
+
+    this.setState({ repositories: getRepos.data });
   }
 
   render() {
-    const { name, bio, avatar_url, followers, following } = this.state;
+    const {
+      name,
+      bio,
+      avatar_url,
+      followers,
+      following,
+      repositories,
+    } = this.state;
 
     return (
       <>
@@ -36,8 +54,17 @@ export default class Profile extends Component {
             following={following}
             followers={followers}
           />
+
           <List>
-            <Card className="card" />
+            {repositories.map(repositorie => (
+              <Card
+                className="card"
+                key={repositorie.id}
+                title={repositorie.name}
+                tech={repositorie.language}
+                stars={repositorie.stargazers_count}
+              />
+            ))}
           </List>
         </ProfileWrapper>
       </>
@@ -46,9 +73,9 @@ export default class Profile extends Component {
 }
 
 Profile.propTypes = {
-  name: PropTypes.string.isRequired,
-  avatar_url: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired,
-  followers: PropTypes.string.isRequired,
-  following: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  avatar_url: PropTypes.string,
+  bio: PropTypes.string,
+  followers: PropTypes.string,
+  following: PropTypes.string,
 };
