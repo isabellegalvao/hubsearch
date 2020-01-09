@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Sidebar from '../../components/Sidebar';
 import Card from '../../components/Card';
@@ -43,3 +44,11 @@ export default class Profile extends Component {
     );
   }
 }
+
+Profile.propTypes = {
+  name: PropTypes.string.isRequired,
+  avatar_url: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired,
+  followers: PropTypes.string.isRequired,
+  following: PropTypes.string.isRequired,
+};
