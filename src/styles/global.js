@@ -45,6 +45,8 @@ export const GlobalStyle = createGlobalStyle`
 		outline: none;
 		padding: 0;
 		border: none;
+    -webkit-appearance: none;
+    border-radius: 0;
 	}
 
   button {
