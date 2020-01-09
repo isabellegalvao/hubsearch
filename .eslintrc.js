@@ -23,7 +23,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/state-in-constructor': 'off',
     'react/jsx-props-no-spreading': 0,
-    'react/prop-types': [2, { ignore: ['children', 'history'] }],
+    'react/prop-types': [2, { ignore: ['children', 'history', 'match', 'location'] }],
     "camelcase": [0]
   },
 };
