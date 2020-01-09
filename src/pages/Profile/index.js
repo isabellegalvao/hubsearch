@@ -60,7 +60,7 @@ export default class Profile extends Component {
             following={following}
             followers={followers}
           >
-            <Button className="button" icon={icon} text="Back to list" />
+            <Button className="button" icon={icon} text="Search new user" />
           </Sidebar>
 
           <List>
