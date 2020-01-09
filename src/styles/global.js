@@ -47,6 +47,10 @@ export const GlobalStyle = createGlobalStyle`
 		border: none;
 	}
 
+  button {
+    background: inherit;
+  }
+
 	html,
   body,
   #root {
