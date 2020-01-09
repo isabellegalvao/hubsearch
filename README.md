@@ -17,4 +17,5 @@ https://goofy-yalow-f526fd.netlify.com/
 - Axios
 - Styled Components
 - Eslint, Prettier.
+- [Gitmoji](https://gitmoji.carloscuesta.me/) for funny commits
 
