@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
+import Button from '../../components/atoms/Button';
 import Topic from '../../components/atoms/Topic';
 import Tagline from '../../components/atoms/Tagline';
 import TextLink from '../../components/atoms/TextLink';
+
+import icon from '../../img/icon__left-arrow.svg';
 
 import { RepositoryWrapper, RepositoryTitle, RepositoryContent } from './style';
 
@@ -33,6 +36,7 @@ export default class Repository extends Component {
     return (
       <>
         <RepositoryWrapper>
+          <Button className="button" icon={icon} text="Back to list" />
           <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
           <RepositoryContent>
             <Topic

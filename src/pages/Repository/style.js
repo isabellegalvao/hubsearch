@@ -12,6 +12,10 @@ export const RepositoryWrapper = styled.div`
   height: 100%;
   padding: 40px;
 
+  .button {
+    margin: 0 0 20px;
+  }
+
   .topic {
     margin: 0 auto 20px;
   }
