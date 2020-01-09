@@ -36,7 +36,7 @@ export default class Main extends Component {
 
       const { name, bio, followers, following, avatar_url } = response.data;
 
-      history.push(`/profile/${newUser}`, {
+      history.push(`/${newUser}`, {
         name,
         bio,
         followers,

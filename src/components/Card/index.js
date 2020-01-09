@@ -11,7 +11,7 @@ import {
   CardLink,
 } from './style';
 
-const Card = ({ className, stars, title, tech }) => {
+const Card = ({ className, owner, stars, title, tech }) => {
   return (
     <>
       <CardWrapper className={className}>
@@ -24,7 +24,7 @@ const Card = ({ className, stars, title, tech }) => {
         <CardTechnologie>{tech}</CardTechnologie>
 
         <CardLink>
-          <Link to="/">SEE DETAILS</Link>
+          <Link to={{ pathname: `/${owner}/${title}` }}>SEE DETAILS</Link>
         </CardLink>
       </CardWrapper>
     </>
@@ -36,6 +36,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   tech: PropTypes.string.isRequired,
   stars: PropTypes.number.isRequired,
+  owner: PropTypes.number.isRequired,
 };
 
 export default Card;

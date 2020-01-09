@@ -65,6 +65,7 @@ export default class Profile extends Component {
                 key={repositorie.id}
                 title={repositorie.name}
                 tech={repositorie.language}
+                owner={repositorie.owner.login}
                 stars={repositorie.stargazers_count}
               />
             ))}
