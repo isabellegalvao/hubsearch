@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
+import Loader from '../../components/atoms/Loader';
+
 import {
   MainWrapper,
   MainContent,
@@ -11,6 +13,7 @@ import {
   MainFormInput,
   MainFormButton,
   MainFormValidation,
+  MainFormActions,
 } from './style';
 
 import arrowIcon from '../../img/icon__right-arrow.svg';
@@ -19,6 +22,7 @@ export default class Main extends Component {
   state = {
     newUser: '',
     error: false,
+    loading: false,
   };
 
   handleInputChange = e => {
@@ -32,6 +36,8 @@ export default class Main extends Component {
     const { history } = this.props;
 
     try {
+      this.setState({ loading: true });
+
       const response = await api.get(`/users/${newUser}`);
 
       const { name, bio, followers, following, avatar_url } = response.data;
@@ -48,10 +54,12 @@ export default class Main extends Component {
     } catch (error) {
       this.setState({ error: true });
     }
+
+    this.setState({ loading: false });
   };
 
   render() {
-    const { newUser, error } = this.state;
+    const { newUser, error, loading } = this.state;
 
     return (
       <>
@@ -76,7 +84,12 @@ export default class Main extends Component {
               </MainFormButton>
             </MainForm>
 
-            {error && <MainFormValidation>Invalid username</MainFormValidation>}
+            <MainFormActions>
+              {error && (
+                <MainFormValidation>Invalid username</MainFormValidation>
+              )}
+              {loading && <Loader className="loader" />}
+            </MainFormActions>
           </MainContent>
         </MainWrapper>
       </>

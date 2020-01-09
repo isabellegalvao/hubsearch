@@ -15,14 +15,19 @@ export const MainWrapper = styled.div`
   height: 100%;
   justify-content: center;
 
+  .loader {
+    margin: 20px auto;
+  }
+
   @media ${DEVICE.mobile} {
     border-width: 15px;
   }
 `;
 
 export const MainContent = styled.div`
-  text-align: center;
   padding: 0 60px;
+  position: relative;
+  text-align: center;
 
   @media ${DEVICE.mobile} {
     padding: 0 20px;
@@ -67,7 +72,14 @@ export const MainFormButton = styled.button`
 `;
 
 export const MainFormValidation = styled.p`
-  margin: 20px auto;
-  font-style: italic;
   color: ${GREY_DARK};
+  font-style: italic;
+  margin: 20px auto;
+`;
+
+export const MainFormActions = styled.div`
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
 `;
