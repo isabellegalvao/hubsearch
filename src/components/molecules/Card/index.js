@@ -2,27 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import {
-  CardWrapper,
-  CardStars,
-  CardStarsNumber,
-  CardTitle,
-  CardTechnologie,
-  CardLink,
-} from './style';
+import Title from '../../atoms/Title';
+import Tagline from '../../atoms/Tagline';
+import Topic from '../../atoms/Topic';
+
+import { CardWrapper, CardLink } from './style';
 
 const Card = ({ className, owner, stars, title, tech }) => {
   return (
     <>
       <CardWrapper className={className}>
-        <CardStars>
-          <CardStarsNumber>{stars}</CardStarsNumber> Stars
-        </CardStars>
-
-        <CardTitle>{title}</CardTitle>
-
-        <CardTechnologie>{tech}</CardTechnologie>
-
+        <Topic item={stars} text="Stars" />
+        <Title text={title} />
+        <Tagline text={tech} />
         <CardLink>
           <Link to={{ pathname: `/${owner}/${title}` }}>SEE DETAILS</Link>
         </CardLink>

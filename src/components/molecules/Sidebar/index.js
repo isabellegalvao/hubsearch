@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Topic from '../../atoms/Topic';
+
 import {
   SidebarWrapper,
   SidebarImage,
   SidebarName,
   SidebarDescription,
-  SidebarItem,
-  SidebarItemNumber,
 } from './style';
 
 const Sidebar = ({ name, avatar, description, followers, following }) => {
@@ -20,13 +20,8 @@ const Sidebar = ({ name, avatar, description, followers, following }) => {
 
         <SidebarDescription>{description}</SidebarDescription>
 
-        <SidebarItem>
-          <SidebarItemNumber>{followers}</SidebarItemNumber> Followers
-        </SidebarItem>
-
-        <SidebarItem>
-          <SidebarItemNumber>{following}</SidebarItemNumber> Following
-        </SidebarItem>
+        <Topic className="topic" item={followers} text="Followers" />
+        <Topic className="topic" item={following} text="Following" />
       </SidebarWrapper>
     </>
   );

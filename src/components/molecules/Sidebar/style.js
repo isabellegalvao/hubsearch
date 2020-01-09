@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PRIMARY_COLOR, LIGHT, SIZES, DEVICE } from '../../styles/theme';
+import { PRIMARY_COLOR, LIGHT, SIZES, DEVICE } from '../../../styles/theme';
 
 export const SidebarWrapper = styled.aside`
   background-color: ${PRIMARY_COLOR};
@@ -10,6 +10,15 @@ export const SidebarWrapper = styled.aside`
   position: fixed;
   top: 0;
   width: 30%;
+
+  .topic {
+    color: ${LIGHT};
+    margin: 15px auto;
+
+    span {
+      color: currentColor;
+    }
+  }
 
   @media ${DEVICE.desktop_max} {
     padding: 30px;
@@ -37,13 +46,4 @@ export const SidebarDescription = styled.p`
   line-height: 22px;
   max-height: 100px;
   overflow: scroll;
-`;
-
-export const SidebarItem = styled.p`
-  margin: 16px auto 0;
-`;
-
-export const SidebarItemNumber = styled.span`
-  font-weight: bold;
-  padding: 0 5px 0 0;
 `;
