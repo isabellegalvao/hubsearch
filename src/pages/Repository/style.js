@@ -12,15 +12,29 @@ export const RepositoryWrapper = styled.div`
   height: 100%;
   padding: 40px;
 
+  .topic {
+    margin: 0 auto 20px;
+  }
+
+  a {
+    display: inline-block;
+    margin: 5px auto 0;
+  }
+
   @media ${DEVICE.mobile} {
     padding: 20px;
   }
 `;
 
-export const Title = styled.h1`
+export const RepositoryTitle = styled.h1`
   background: ${PRIMARY_COLOR};
   color: ${LIGHT};
   font-size: ${SIZES.lg};
   padding: 20px;
   text-transform: uppercase;
+`;
+
+export const RepositoryContent = styled.div`
+  background: ${LIGHT};
+  padding: 25px;
 `;

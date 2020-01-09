@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
-import Sidebar from '../../components/Sidebar';
-import Card from '../../components/Card';
+import Sidebar from '../../components/molecules/Sidebar';
+import Card from '../../components/molecules/Card';
 
 import { ProfileWrapper, List } from './style';
 
