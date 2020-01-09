@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
+import Button from '../../components/atoms/Button';
 import Sidebar from '../../components/molecules/Sidebar';
 import Card from '../../components/molecules/Card';
+
+import icon from '../../img/icon__left-arrow.svg';
 
 import { ProfileWrapper, List } from './style';
 
@@ -56,7 +59,9 @@ export default class Profile extends Component {
             avatar={avatar_url}
             following={following}
             followers={followers}
-          />
+          >
+            <Button className="button" icon={icon} text="Back to list" />
+          </Sidebar>
 
           <List>
             {repositories.map(repositorie => (

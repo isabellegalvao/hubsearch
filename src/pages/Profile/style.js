@@ -1,11 +1,26 @@
 import styled from 'styled-components';
-import { GREY_LIGHT, DEVICE } from '../../styles/theme';
+import { GREY_LIGHT, DEVICE, LIGHT } from '../../styles/theme';
 
 export const ProfileWrapper = styled.div`
   background-color: ${GREY_LIGHT};
   display: flex;
   justify-content: flex-end;
   min-height: 100%;
+
+  .button {
+    width: 100%;
+    margin: 0 auto 30px;
+
+    &:hover {
+      p {
+        color: ${LIGHT};
+      }
+    }
+
+    p {
+      width: calc(100% - 50px);
+    }
+  }
 
   @media ${DEVICE.desktop_max} {
     display: block;
