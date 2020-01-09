@@ -65,3 +65,9 @@ export const MainFormButton = styled.button`
   cursor: pointer;
   width: 60px;
 `;
+
+export const MainFormValidation = styled.p`
+  margin: 20px auto;
+  font-style: italic;
+  color: ${GREY_DARK};
+`;

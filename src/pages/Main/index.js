@@ -10,6 +10,7 @@ import {
   MainForm,
   MainFormInput,
   MainFormButton,
+  MainFormValidation,
 } from './style';
 
 import arrowIcon from '../../img/icon__right-arrow.svg';
@@ -17,6 +18,7 @@ import arrowIcon from '../../img/icon__right-arrow.svg';
 export default class Main extends Component {
   state = {
     newUser: '',
+    error: false,
   };
 
   handleInputChange = e => {
@@ -29,21 +31,27 @@ export default class Main extends Component {
     const { newUser } = this.state;
     const { history } = this.props;
 
-    const response = await api.get(`/users/${newUser}`);
+    try {
+      const response = await api.get(`/users/${newUser}`);
 
-    const { name, bio, followers, following, avatar_url } = response.data;
+      const { name, bio, followers, following, avatar_url } = response.data;
 
-    history.push(`/profile/${newUser}`, {
-      name,
-      bio,
-      followers,
-      following,
-      avatar_url,
-    });
+      history.push(`/profile/${newUser}`, {
+        name,
+        bio,
+        followers,
+        following,
+        avatar_url,
+      });
+
+      this.setState({ error: false });
+    } catch (error) {
+      this.setState({ error: true });
+    }
   };
 
   render() {
-    const { newUser } = this.state;
+    const { newUser, error } = this.state;
 
     return (
       <>
@@ -67,6 +75,8 @@ export default class Main extends Component {
                 <img src={arrowIcon} alt="Search" />
               </MainFormButton>
             </MainForm>
+
+            {error && <MainFormValidation>Invalid username</MainFormValidation>}
           </MainContent>
         </MainWrapper>
       </>
