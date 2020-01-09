@@ -7,3 +7,14 @@
 <br>
 
 <p align="center">🔙 This is a new version of an old project, to see the legacy code <a href="https://github.com/vncsrbro/gitstar" target="_blank">click here</a>. 🔙</p>
+
+## 🖥️ Live Version
+https://goofy-yalow-f526fd.netlify.com/
+
+## 🚀 Technologies
+
+- ReactJS
+- Axios
+- Styled Components
+- Eslint, Prettier.
+
