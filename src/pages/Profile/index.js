@@ -9,7 +9,7 @@ import Card from '../../components/molecules/Card';
 
 import icon from '../../img/icon__left-arrow.svg';
 
-import { ProfileWrapper, List, ListLoader } from './style';
+import { ProfileWrapper, List } from './style';
 
 export default class Profile extends Component {
   state = {

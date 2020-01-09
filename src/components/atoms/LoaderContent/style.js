@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE } from '../../../styles/theme';
 
 export const LoaderContentWrapper = styled.div`
   align-items: center;
@@ -7,9 +8,15 @@ export const LoaderContentWrapper = styled.div`
   width: 100%;
   justify-content: center;
   text-align: center;
+  padding: 0 40px;
 
   svg {
-    width: 80%;
+    width: 100%;
     height: 300px;
+  }
+
+  @media ${DEVICE.tablet_max} {
+    height: auto;
+    padding: 0 20px;
   }
 `;
