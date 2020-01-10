@@ -97,16 +97,25 @@ export default class Profile extends Component {
           <ProfileList>
             {loading && <LoaderContent />}
 
-            {repositories.map(repositorie => (
-              <Card
-                className="card"
-                key={repositorie.id}
-                title={repositorie.name}
-                tech={repositorie.language}
-                owner={repositorie.owner.login}
-                stars={repositorie.stargazers_count}
+            {repositories.length > 0 ? (
+              <>
+                {repositories.map(repositorie => (
+                  <Card
+                    className="card"
+                    key={repositorie.id}
+                    title={repositorie.name}
+                    tech={repositorie.language}
+                    owner={repositorie.owner.login}
+                    stars={repositorie.stargazers_count}
+                  />
+                ))}
+              </>
+            ) : (
+              <Title
+                className="title"
+                text="This user does not have repositories (at least public ones)"
               />
-            ))}
+            )}
           </ProfileList>
         </ProfileWrapper>
       </>

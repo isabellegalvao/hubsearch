@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {
   PRIMARY_COLOR,
+  GREY_DARK,
   GREY_LIGHT,
   DEVICE,
   LIGHT,
@@ -67,6 +68,12 @@ export const ProfileList = styled.div`
   flex-wrap: wrap;
   padding: 40px 40px 0;
   width: 70%;
+
+  .title {
+    color: ${GREY_DARK};
+    font-size: ${SIZES.lg};
+    text-align: left;
+  }
 
   .card {
     background: ${LIGHT};
