@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { GREY_LIGHT, DEVICE, LIGHT } from '../../styles/theme';
+import {
+  PRIMARY_COLOR,
+  GREY_LIGHT,
+  DEVICE,
+  LIGHT,
+  SIZES,
+} from '../../styles/theme';
 
 export const ProfileWrapper = styled.div`
   background-color: ${GREY_LIGHT};
@@ -7,9 +13,32 @@ export const ProfileWrapper = styled.div`
   justify-content: flex-end;
   min-height: 100%;
 
+  @media ${DEVICE.desktop_max} {
+    display: block;
+  }
+`;
+
+export const ProfileSidebar = styled.aside`
+  align-content: space-between;
+  background-color: ${PRIMARY_COLOR};
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  left: 0;
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  width: 30%;
+
+  .title {
+    color: ${LIGHT};
+    font-size: ${SIZES.xl};
+    text-align: left;
+  }
+
   .button {
+    margin: 30px auto 0;
     width: 100%;
-    margin: 0 auto 30px;
 
     &:hover {
       p {
@@ -23,11 +52,12 @@ export const ProfileWrapper = styled.div`
   }
 
   @media ${DEVICE.desktop_max} {
-    display: block;
+    position: relative;
+    width: 100%;
   }
 `;
 
-export const List = styled.div`
+export const ProfileList = styled.div`
   align-content: flex-start;
   display: flex;
   flex-wrap: wrap;

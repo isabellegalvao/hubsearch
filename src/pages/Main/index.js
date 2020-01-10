@@ -42,8 +42,7 @@ export default class Main extends Component {
 
       history.push(`/${newUser}`);
     } catch (error) {
-      this.setState({ error: true });
-      this.setState({ loading: false });
+      this.setState({ error: true, loading: false });
     }
   };
 

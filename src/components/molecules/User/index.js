@@ -23,6 +23,8 @@ User.defaultProps = {
   name: '',
   description: '',
   avatar: '',
+  followers: '',
+  following: '',
 };
 
 User.propTypes = {

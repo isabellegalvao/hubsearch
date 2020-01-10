@@ -29,10 +29,8 @@ export default class Repository extends Component {
     try {
       const getRepository = await api.get(`/repos/${owner}/${repo}`);
       const { data: currentRepo } = getRepository;
-      this.setState({ currentRepo });
-      this.setState({ loading: false });
+      this.setState({ currentRepo, loading: false });
     } catch (error) {
-      // @TODO handle error
       this.setState({ repoExists: false });
     }
   }

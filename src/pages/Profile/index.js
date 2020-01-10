@@ -3,19 +3,21 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 
 import Button from '../../components/atoms/Button';
+import Title from '../../components/atoms/Title';
 import LoaderContent from '../../components/atoms/LoaderContent';
-import Sidebar from '../../components/molecules/Sidebar';
+import User from '../../components/molecules/User';
 import Card from '../../components/molecules/Card';
 
 import icon from '../../img/icon__left-arrow.svg';
 
-import { ProfileWrapper, List } from './style';
+import { ProfileWrapper, ProfileList, ProfileSidebar } from './style';
 
 export default class Profile extends Component {
   state = {
     user: {},
     repositories: [],
     loading: true,
+    userExists: true,
   };
 
   async componentDidMount() {
@@ -25,19 +27,20 @@ export default class Profile extends Component {
       },
     } = this.props;
 
-    try {
-      const getUser = await api.get(`/users/${user}`);
-      const { data } = getUser;
-      this.setState({ user: data });
-
-      const getRepos = await api.get(`/users/${user}/repos`);
-      const { data: repositories } = getRepos;
-      this.setState({ repositories });
-
-      this.setState({ loading: false });
-    } catch (error) {
-      this.setState({ repositories: [] });
-    }
+    const getUser = await api
+      .get(`/users/${user}`)
+      .then(response => {
+        this.setState({ user: response.data, userExists: true });
+      })
+      .then(() => {
+        const getRepos = api.get(`/users/${user}/repos`).then(response => {
+          const { data: repositories } = response;
+          this.setState({ repositories, loading: false });
+        });
+      })
+      .catch(() => {
+        this.setState({ userExists: false, loading: false });
+      });
   }
 
   searchNewUser = () => {
@@ -46,27 +49,37 @@ export default class Profile extends Component {
   };
 
   render() {
-    const { user, repositories, loading } = this.state;
+    const { user, repositories, loading, userExists } = this.state;
 
     return (
       <>
         <ProfileWrapper>
-          <Sidebar
-            name={user.login}
-            description={user.bio}
-            avatar={user.avatar_url}
-            following={user.following}
-            followers={user.followers}
-          >
+          <ProfileSidebar>
+            {userExists ? (
+              <>
+                <User
+                  name={user.login}
+                  description={user.bio}
+                  avatar={user.avatar_url}
+                  following={user.following}
+                  followers={user.followers}
+                />
+              </>
+            ) : (
+              <>
+                <Title className="title" text="This user does not exists" />
+              </>
+            )}
+
             <Button
               className="button"
               icon={icon}
               text="Search new user"
               onClick={() => this.searchNewUser()}
             />
-          </Sidebar>
+          </ProfileSidebar>
 
-          <List>
+          <ProfileList>
             {loading && <LoaderContent />}
 
             {repositories.map(repositorie => (
@@ -79,7 +92,7 @@ export default class Profile extends Component {
                 stars={repositorie.stargazers_count}
               />
             ))}
-          </List>
+          </ProfileList>
         </ProfileWrapper>
       </>
     );
