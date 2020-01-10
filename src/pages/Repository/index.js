@@ -6,6 +6,7 @@ import Button from '../../components/atoms/Button';
 import Topic from '../../components/atoms/Topic';
 import Tagline from '../../components/atoms/Tagline';
 import TextLink from '../../components/atoms/TextLink';
+import LoaderContent from '../../components/atoms/LoaderContent';
 
 import icon from '../../img/icon__left-arrow.svg';
 
@@ -14,6 +15,8 @@ import { RepositoryWrapper, RepositoryTitle, RepositoryContent } from './style';
 export default class Repository extends Component {
   state = {
     currentRepo: {},
+    repoExists: true,
+    loading: true,
   };
 
   async componentDidMount() {
@@ -27,9 +30,10 @@ export default class Repository extends Component {
       const getRepository = await api.get(`/repos/${owner}/${repo}`);
       const { data: currentRepo } = getRepository;
       this.setState({ currentRepo });
+      this.setState({ loading: false });
     } catch (error) {
       // @TODO handle error
-      this.setState({ currentRepo: [] });
+      this.setState({ repoExists: false });
     }
   }
 
@@ -45,7 +49,7 @@ export default class Repository extends Component {
   };
 
   render() {
-    const { currentRepo } = this.state;
+    const { currentRepo, repoExists, loading } = this.state;
 
     return (
       <>
@@ -56,25 +60,43 @@ export default class Repository extends Component {
             icon={icon}
             text="Back to list"
           />
-          <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
-          <RepositoryContent>
-            <Topic
-              className="topic"
-              item={currentRepo.stargazers_count}
-              text="Stars"
-            />
+          {repoExists ? (
+            <>
+              {loading ? (
+                <LoaderContent className="loader" />
+              ) : (
+                <>
+                  <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
+                  <RepositoryContent>
+                    <Topic
+                      className="topic"
+                      item={currentRepo.stargazers_count}
+                      text="Stars"
+                    />
 
-            {currentRepo.language && <Tagline text={currentRepo.language} />}
+                    {currentRepo.language && (
+                      <Tagline text={currentRepo.language} />
+                    )}
 
-            {currentRepo.description && (
-              <Tagline text={currentRepo.description} />
-            )}
+                    {currentRepo.description && (
+                      <Tagline text={currentRepo.description} />
+                    )}
 
-            <TextLink
-              href={`https://github.com/${currentRepo.full_name}`}
-              label="SEE ON GITHUB"
-            />
-          </RepositoryContent>
+                    <TextLink
+                      href={`https://github.com/${currentRepo.full_name}`}
+                      label="SEE ON GITHUB"
+                    />
+                  </RepositoryContent>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <RepositoryTitle>
+                This repository does not exists.
+              </RepositoryTitle>
+            </>
+          )}
         </RepositoryWrapper>
       </>
     );

@@ -20,6 +20,15 @@ export const RepositoryWrapper = styled.div`
     margin: 0 auto 20px;
   }
 
+  .loader {
+    height: 400px;
+    padding: 0;
+
+    svg {
+      width: 100%;
+    }
+  }
+
   a {
     display: inline-block;
     margin: 5px auto 0;

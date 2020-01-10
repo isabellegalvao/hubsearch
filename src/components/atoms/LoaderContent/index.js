@@ -1,12 +1,13 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import Proptypes from 'prop-types';
 
 import { GREY, GREY_LIGHT } from '../../../styles/theme';
 import { LoaderContentWrapper } from './style';
 
-const LoaderContent = () => {
+const LoaderContent = ({ className }) => {
   return (
-    <LoaderContentWrapper>
+    <LoaderContentWrapper className={className}>
       <ContentLoader
         height={160}
         width={600}
@@ -22,6 +23,14 @@ const LoaderContent = () => {
       </ContentLoader>
     </LoaderContentWrapper>
   );
+};
+
+LoaderContent.defaultProps = {
+  className: '',
+};
+
+LoaderContent.propTypes = {
+  className: Proptypes.string,
 };
 
 export default LoaderContent;
