@@ -7,14 +7,13 @@ const Topic = ({ className, item, text }) => {
   return (
     <StyledTopic className={className}>
       <StyledTopicItem> {item} </StyledTopicItem>
-      {text}
+      {item ? <>{text}</> : ''}
     </StyledTopic>
   );
 };
 
 Topic.defaultProps = {
   className: '',
-  // item: '',
 };
 
 Topic.propTypes = {

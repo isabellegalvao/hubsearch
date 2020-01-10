@@ -12,8 +12,15 @@ const User = ({ name, avatar, description, followers, following }) => {
         <UserImage src={avatar} />
         <UserName>{name}</UserName>
         <UserDescription>{description}</UserDescription>
-        <Topic className="topic" item={followers} text="Followers" />
-        <Topic className="topic" item={following} text="Following" />
+
+        {followers || following ? (
+          <>
+            <Topic className="topic" item={followers} text="Followers" />
+            <Topic className="topic" item={following} text="Following" />
+          </>
+        ) : (
+          ''
+        )}
       </UserWrapper>
     </>
   );
@@ -23,16 +30,16 @@ User.defaultProps = {
   name: '',
   description: '',
   avatar: '',
-  followers: '',
-  following: '',
+  followers: 0,
+  following: 0,
 };
 
 User.propTypes = {
   name: PropTypes.string,
   avatar: PropTypes.string,
   description: PropTypes.string,
-  followers: PropTypes.number.isRequired,
-  following: PropTypes.number.isRequired,
+  followers: PropTypes.number,
+  following: PropTypes.number,
 };
 
 export default User;
