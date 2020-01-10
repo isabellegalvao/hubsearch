@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LIGHT, SIZES } from '../../../styles/theme';
+import { LIGHT, SIZES, DEVICE } from '../../../styles/theme';
 
 export const UserWrapper = styled.div`
   color: ${LIGHT};
@@ -26,6 +26,10 @@ export const UserName = styled.h1`
   font-size: ${SIZES.xl};
   margin: 16px auto;
   word-break: break-all;
+
+  @media ${DEVICE.mobile} {
+    font-size: ${SIZES.lg};
+  }
 `;
 
 export const UserDescription = styled.p`
