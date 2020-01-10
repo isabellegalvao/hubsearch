@@ -7,7 +7,7 @@ const Topic = ({ className, item, text }) => {
   return (
     <StyledTopic className={className}>
       <StyledTopicItem> {item} </StyledTopicItem>
-      {item ? <>{text}</> : ''}
+      {item >= 0 ? <>{text}</> : ''}
     </StyledTopic>
   );
 };
