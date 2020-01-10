@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ContentLoader from 'react-content-loader';
 
 import { GREY, GREY_LIGHT } from '../../../styles/theme';
-
 import { LoaderContentWrapper } from './style';
 
-const LoaderContent = ({ loading }) => {
+const LoaderContent = () => {
   return (
-    <LoaderContentWrapper loading={loading}>
+    <LoaderContentWrapper>
       <ContentLoader
         height={160}
         width={600}
@@ -24,10 +22,6 @@ const LoaderContent = ({ loading }) => {
       </ContentLoader>
     </LoaderContentWrapper>
   );
-};
-
-LoaderContent.propTypes = {
-  loading: PropTypes.bool.isRequired,
 };
 
 export default LoaderContent;

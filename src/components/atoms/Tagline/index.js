@@ -7,8 +7,12 @@ const Tagline = ({ text }) => {
   return <StyledTagline>{text}</StyledTagline>;
 };
 
+Tagline.defaultProps = {
+  text: '',
+};
+
 Tagline.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
 
 export default Tagline;

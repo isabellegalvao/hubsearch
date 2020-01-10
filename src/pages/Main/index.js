@@ -40,15 +40,7 @@ export default class Main extends Component {
 
       const response = await api.get(`/users/${newUser}`);
 
-      const { name, bio, followers, following, avatar_url } = response.data;
-
-      history.push(`/${newUser}`, {
-        name,
-        bio,
-        followers,
-        following,
-        avatar_url,
-      });
+      history.push(`/${newUser}`);
     } catch (error) {
       this.setState({ error: true });
       this.setState({ loading: false });

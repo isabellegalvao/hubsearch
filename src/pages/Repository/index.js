@@ -27,18 +27,31 @@ export default class Repository extends Component {
       const getRepository = await api.get(`/repos/${owner}/${repo}`);
       const { data: currentRepo } = getRepository;
       this.setState({ currentRepo });
-    } catch (error) { }
+    } catch (error) {
+      // @TODO handle error
+      this.setState({ currentRepo: [] });
+    }
   }
+
+  gobackToProfile = () => {
+    const {
+      match: {
+        params: { owner },
+      },
+    } = this.props;
+
+    const { history } = this.props;
+    history.push(`/${owner}`);
+  };
 
   render() {
     const { currentRepo } = this.state;
-    const { history } = this.props;
 
     return (
       <>
         <RepositoryWrapper>
           <Button
-            onClick={history.goBack}
+            onClick={this.gobackToProfile}
             className="button"
             icon={icon}
             text="Back to list"

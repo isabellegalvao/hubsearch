@@ -23,30 +23,38 @@ export default class Profile extends Component {
   };
 
   async componentDidMount() {
+    // const {
+    //   match: {
+    //     params: { user },
+    //   },
+    //   location,
+    // } = this.props;
+
     const {
       match: {
         params: { user },
       },
-      location,
     } = this.props;
 
-    const { name, bio, avatar_url, followers, following } = location.state;
-    this.setState({ name, bio, avatar_url, followers, following });
-
     try {
+      const getUser = await api.get(`/users/${user}`);
+      const { name, bio, avatar_url, followers, following } = getUser.data;
+      this.setState({ name, bio, avatar_url, followers, following });
+
       const getRepos = await api.get(`/users/${user}/repos`);
       const { data: repositories } = getRepos;
       this.setState({ repositories });
+
       this.setState({ loading: false });
     } catch (error) {
       this.setState({ repositories: [] });
     }
   }
 
-  searchNewUser() {
+  searchNewUser = () => {
     const { history } = this.props;
     history.push(`/`);
-  }
+  };
 
   render() {
     const {

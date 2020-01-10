@@ -14,6 +14,7 @@ const Topic = ({ className, item, text }) => {
 
 Topic.defaultProps = {
   className: '',
+  // item: '',
 };
 
 Topic.propTypes = {
