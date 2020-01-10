@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
+import Loader from '../../components/atoms/Loader';
 import Button from '../../components/atoms/Button';
 import Title from '../../components/atoms/Title';
 import LoaderContent from '../../components/atoms/LoaderContent';
@@ -18,6 +19,7 @@ export default class Profile extends Component {
     repositories: [],
     loading: true,
     userExists: true,
+    loadingUser: true,
   };
 
   async componentDidMount() {
@@ -30,16 +32,27 @@ export default class Profile extends Component {
     const getUser = await api
       .get(`/users/${user}`)
       .then(response => {
-        this.setState({ user: response.data, userExists: true });
+        this.setState({
+          user: response.data,
+          userExists: true,
+          loadingUser: false,
+        });
       })
       .then(() => {
         const getRepos = api.get(`/users/${user}/repos`).then(response => {
           const { data: repositories } = response;
-          this.setState({ repositories, loading: false });
+          this.setState({
+            repositories,
+            loading: false,
+          });
         });
       })
       .catch(() => {
-        this.setState({ userExists: false, loading: false });
+        this.setState({
+          userExists: false,
+          loading: false,
+          loadingUser: false,
+        });
       });
   }
 
@@ -49,12 +62,14 @@ export default class Profile extends Component {
   };
 
   render() {
-    const { user, repositories, loading, userExists } = this.state;
+    const { user, repositories, loading, userExists, loadingUser } = this.state;
 
     return (
       <>
         <ProfileWrapper>
           <ProfileSidebar>
+            {loadingUser && <Loader className="loading-user" />}
+
             {userExists ? (
               <>
                 <User

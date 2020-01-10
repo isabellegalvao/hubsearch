@@ -36,6 +36,10 @@ export const ProfileSidebar = styled.aside`
     text-align: left;
   }
 
+  .loading-user {
+    margin: 0 auto;
+  }
+
   .button {
     margin: 30px auto 0;
     width: 100%;
