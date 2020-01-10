@@ -3,42 +3,29 @@ import PropTypes from 'prop-types';
 
 import Topic from '../../atoms/Topic';
 
-import {
-  SidebarWrapper,
-  SidebarImage,
-  SidebarName,
-  SidebarDescription,
-} from './style';
+import { UserWrapper, UserImage, UserName, UserDescription } from './style';
 
-const Sidebar = ({
-  name,
-  avatar,
-  description,
-  followers,
-  following,
-  children,
-}) => {
+const User = ({ name, avatar, description, followers, following }) => {
   return (
     <>
-      <SidebarWrapper>
-        {children}
-        <SidebarImage src={avatar} />
-        <SidebarName>{name}</SidebarName>
-        <SidebarDescription>{description}</SidebarDescription>
+      <UserWrapper>
+        <UserImage src={avatar} />
+        <UserName>{name}</UserName>
+        <UserDescription>{description}</UserDescription>
         <Topic className="topic" item={followers} text="Followers" />
         <Topic className="topic" item={following} text="Following" />
-      </SidebarWrapper>
+      </UserWrapper>
     </>
   );
 };
 
-Sidebar.defaultProps = {
+User.defaultProps = {
   name: '',
   description: '',
   avatar: '',
 };
 
-Sidebar.propTypes = {
+User.propTypes = {
   name: PropTypes.string,
   avatar: PropTypes.string,
   description: PropTypes.string,
@@ -46,4 +33,4 @@ Sidebar.propTypes = {
   following: PropTypes.number.isRequired,
 };
 
-export default Sidebar;
+export default User;
