@@ -13,23 +13,12 @@ import { ProfileWrapper, List } from './style';
 
 export default class Profile extends Component {
   state = {
-    name: '',
-    bio: '',
-    avatar_url: '',
-    followers: '',
-    following: '',
+    user: {},
     repositories: [],
     loading: true,
   };
 
   async componentDidMount() {
-    // const {
-    //   match: {
-    //     params: { user },
-    //   },
-    //   location,
-    // } = this.props;
-
     const {
       match: {
         params: { user },
@@ -38,8 +27,8 @@ export default class Profile extends Component {
 
     try {
       const getUser = await api.get(`/users/${user}`);
-      const { name, bio, avatar_url, followers, following } = getUser.data;
-      this.setState({ name, bio, avatar_url, followers, following });
+      const { data } = getUser;
+      this.setState({ user: data });
 
       const getRepos = await api.get(`/users/${user}/repos`);
       const { data: repositories } = getRepos;
@@ -57,25 +46,17 @@ export default class Profile extends Component {
   };
 
   render() {
-    const {
-      name,
-      bio,
-      avatar_url,
-      followers,
-      following,
-      repositories,
-      loading,
-    } = this.state;
+    const { user, repositories, loading } = this.state;
 
     return (
       <>
         <ProfileWrapper>
           <Sidebar
-            name={name}
-            description={bio}
-            avatar={avatar_url}
-            following={following}
-            followers={followers}
+            name={user.login}
+            description={user.bio}
+            avatar={user.avatar_url}
+            following={user.following}
+            followers={user.followers}
           >
             <Button
               className="button"
