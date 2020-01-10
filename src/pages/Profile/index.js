@@ -40,24 +40,24 @@ export default class Profile extends Component {
         });
       })
       .then(() => {
-        api
-          .get(`/users/${user}/repos`)
-          .then(response => {
-            const { data: repositories } = response;
-            this.setState({
-              repositories,
-              loading: false,
-            });
-          })
-          .catch(() => {
-            this.setState({ repositoriesExists: false });
+        api.get(`/users/${user}/repos`).then(response => {
+          const { data: repositories } = response;
+          this.setState({
+            repositories,
+            loading: false,
           });
+
+          if (repositories.length <= 0) {
+            this.setState({ repositoriesExists: false });
+          }
+        });
       })
       .catch(() => {
         this.setState({
           userExists: false,
           loading: false,
           loadingUser: false,
+          repositoriesExists: false,
         });
       });
   }
@@ -124,10 +124,14 @@ export default class Profile extends Component {
                 ))}
               </>
             ) : (
-              <Title
-                className="title"
-                text="This user does not have repositories (at least public ones)"
-              />
+              <>
+                {userExists && (
+                  <Title
+                    className="title"
+                    text="This user does not have repositories (at least public ones)"
+                  />
+                )}
+              </>
             )}
           </ProfileList>
         </ProfileWrapper>
