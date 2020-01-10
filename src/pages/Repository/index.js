@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { motion } from 'framer-motion';
 
 import api from '../../services/api';
 
@@ -49,6 +50,11 @@ export default class Repository extends Component {
   render() {
     const { currentRepo, repoExists, loading } = this.state;
 
+    const variants = {
+      hidden: { opacity: 0, y: '100px' },
+      visible: { opacity: 1, y: '0' },
+    };
+
     return (
       <>
         <RepositoryWrapper>
@@ -64,27 +70,34 @@ export default class Repository extends Component {
                 <LoaderContent className="loader" />
               ) : (
                 <>
-                  <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
-                  <RepositoryContent>
-                    <Topic
-                      className="topic"
-                      item={currentRepo.stargazers_count}
-                      text="Stars"
-                    />
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <RepositoryTitle>{currentRepo.name}</RepositoryTitle>
+                    <RepositoryContent>
+                      <Topic
+                        className="topic"
+                        item={currentRepo.stargazers_count}
+                        text="Stars"
+                      />
 
-                    {currentRepo.language && (
-                      <Tagline text={currentRepo.language} />
-                    )}
+                      {currentRepo.language && (
+                        <Tagline text={currentRepo.language} />
+                      )}
 
-                    {currentRepo.description && (
-                      <Tagline text={currentRepo.description} />
-                    )}
+                      {currentRepo.description && (
+                        <Tagline text={currentRepo.description} />
+                      )}
 
-                    <TextLink
-                      href={`https://github.com/${currentRepo.full_name}`}
-                      label="SEE ON GITHUB"
-                    />
-                  </RepositoryContent>
+                      <TextLink
+                        href={`https://github.com/${currentRepo.full_name}`}
+                        label="SEE ON GITHUB"
+                      />
+                    </RepositoryContent>
+                  </motion.div>
                 </>
               )}
             </>
