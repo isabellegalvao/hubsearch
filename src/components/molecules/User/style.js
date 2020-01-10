@@ -25,6 +25,7 @@ export const UserImage = styled.img`
 export const UserName = styled.h1`
   font-size: ${SIZES.xl};
   margin: 16px auto;
+  word-break: break-all;
 `;
 
 export const UserDescription = styled.p`
