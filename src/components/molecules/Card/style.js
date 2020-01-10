@@ -4,6 +4,11 @@ import { LIGHT, PRIMARY_COLOR, SIZES, GREY_DARK } from '../../../styles/theme';
 export const CardWrapper = styled.div`
   background: ${LIGHT};
   padding: 25px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const CardLink = styled.p`
