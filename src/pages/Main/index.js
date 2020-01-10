@@ -35,10 +35,12 @@ export default class Main extends Component {
     const { newUser } = this.state;
     const { history } = this.props;
 
+    this.setState({ loading: true });
+
     await api
       .get(`/users/${newUser}`)
       .then(() => {
-        this.setState({ loading: true });
+        this.setState({ loading: false });
         history.push(`/${newUser}`);
       })
       .catch(() => {
