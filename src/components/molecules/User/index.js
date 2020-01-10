@@ -10,7 +10,10 @@ const User = ({ name, avatar, description, followers, following }) => {
     <>
       <UserWrapper>
         <UserImage src={avatar} />
-        <UserName>{name}</UserName>
+        <UserName>
+          {name ? '@' : ''}
+          {name}
+        </UserName>
         <UserDescription>{description}</UserDescription>
 
         {followers || following ? (

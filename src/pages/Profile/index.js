@@ -73,7 +73,7 @@ export default class Profile extends Component {
             {userExists ? (
               <>
                 <User
-                  name={`@${user.login}`}
+                  name={user.login}
                   description={user.bio}
                   avatar={user.avatar_url}
                   following={user.following}
