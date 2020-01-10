@@ -29,7 +29,7 @@ export default class Profile extends Component {
       },
     } = this.props;
 
-    const getUser = await api
+    await api
       .get(`/users/${user}`)
       .then(response => {
         this.setState({
@@ -39,7 +39,7 @@ export default class Profile extends Component {
         });
       })
       .then(() => {
-        const getRepos = api.get(`/users/${user}/repos`).then(response => {
+        api.get(`/users/${user}/repos`).then(response => {
           const { data: repositories } = response;
           this.setState({
             repositories,
