@@ -65,6 +65,7 @@ export const ProfileList = styled.div`
   width: 70%;
 
   .card {
+    background: ${LIGHT};
     flex-basis: calc(50% - 20px);
     margin-bottom: 40px;
 
