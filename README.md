@@ -12,6 +12,13 @@
 
 https://goofy-yalow-f526fd.netlify.com/
 
+## ⚙️ Running the application
+
+- `git clone https://github.com/vncsrbro/hubsearch`
+- `cd hubsearch`
+- `yarn install`
+- `yarn start`
+
 ## 🚀 Technologies
 
 - ReactJS
