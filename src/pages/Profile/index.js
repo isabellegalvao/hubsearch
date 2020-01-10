@@ -20,6 +20,7 @@ export default class Profile extends Component {
     loading: true,
     userExists: true,
     loadingUser: true,
+    repositoriesExists: true,
   };
 
   async componentDidMount() {
@@ -39,13 +40,18 @@ export default class Profile extends Component {
         });
       })
       .then(() => {
-        api.get(`/users/${user}/repos`).then(response => {
-          const { data: repositories } = response;
-          this.setState({
-            repositories,
-            loading: false,
+        api
+          .get(`/users/${user}/repos`)
+          .then(response => {
+            const { data: repositories } = response;
+            this.setState({
+              repositories,
+              loading: false,
+            });
+          })
+          .catch(() => {
+            this.setState({ repositoriesExists: false });
           });
-        });
       })
       .catch(() => {
         this.setState({
@@ -62,7 +68,14 @@ export default class Profile extends Component {
   };
 
   render() {
-    const { user, repositories, loading, userExists, loadingUser } = this.state;
+    const {
+      user,
+      repositories,
+      loading,
+      userExists,
+      loadingUser,
+      repositoriesExists,
+    } = this.state;
 
     return (
       <>
@@ -97,7 +110,7 @@ export default class Profile extends Component {
           <ProfileList>
             {loading && <LoaderContent />}
 
-            {repositories.length > 0 ? (
+            {repositoriesExists ? (
               <>
                 {repositories.map(repositorie => (
                   <Card
