@@ -9,6 +9,10 @@ export const CardWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
+
+  .card-title {
+    word-break: break-all;
+  }
 `;
 
 export const CardLink = styled.p`

@@ -80,6 +80,10 @@ export const ProfileList = styled.div`
     flex-basis: calc(50% - 20px);
     margin-bottom: 40px;
 
+    .title {
+      color: red;
+    }
+
     &:not(:nth-child(even)) {
       margin-right: 40px;
     }

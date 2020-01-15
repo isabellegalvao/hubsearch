@@ -26,7 +26,7 @@ const Card = ({ className, owner, stars, title, tech }) => {
       >
         <CardWrapper>
           <Topic item={stars} text="Stars" />
-          <Title text={title} />
+          <Title className="card-title" text={title} />
           {tech && <Tagline text={tech} />}
           <CardLink>
             <Link to={{ pathname: `/${owner}/${title}` }}>SEE DETAILS</Link>
