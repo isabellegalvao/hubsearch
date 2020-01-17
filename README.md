@@ -10,7 +10,7 @@
 
 ## 🖥️ Live Version
 
-https://goofy-yalow-f526fd.netlify.com/
+https://hub-search.netlify.com
 
 ## ⚙️ Running the application
 
